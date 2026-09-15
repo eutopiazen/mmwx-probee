@@ -1,0 +1,66 @@
+{
+  "name": "mmwx-probee",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Standalone Cloudflare Worker probe frontend for MiaoMiaoWuX",
+  "cloudflare": {
+    "bindings": {
+      "MMWX_ORIGIN": {
+        "description": "妙妙屋 X 主控的公网 HTTPS 地址，例如 `https://panel.example.com`。"
+      },
+      "PROBE_TOKEN": {
+        "description": "在主控的 **系统设置 → 探针** 中生成的独立探针访问密钥。"
+      },
+      "PROBE_POLL_INTERVAL_SECONDS": {
+        "description": "ProbeHub 从主控采集实时快照的间隔（秒），默认 3；需要降载时可设置为 5。"
+      },
+      "PROBE_BACKGROUND_URL": {
+        "description": "可选。自定义全站背景图片的 HTTPS 地址；也可填写仓库 public 目录下以 / 开头的静态资源路径。"
+      },
+      "PROBE_BACKGROUND_OVERLAY": {
+        "description": "可选。背景遮罩强度 0–0.95，默认 0.32；数值越高，文字越清晰、原图越淡。"
+      },
+      "PROBE_BACKGROUND_POSITION": {
+        "description": "可选。背景位置：center、top、bottom、left 或 right，默认 center。"
+      },
+      "PROBE_BACKGROUND_THEMES": {
+        "description": "可选。应用背景的主题名，以英文逗号分隔；默认 pixel,flat,anime,glass,lumina,premium,ran,glassmorphism,emerald，可删除不需要的主题。"
+      }
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "deploy": "./scripts/deploy.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "^14.0.0",
+    "@types/d3-geo": "^3.1.1",
+    "@types/topojson-client": "^3.1.5",
+    "@vitejs/plugin-react-swc": "^4.1.0",
+    "d3-geo": "^3.1.1",
+    "i18n-iso-countries": "^7.14.0",
+    "lottie-react": "^2.4.1",
+    "lucide-react": "^0.545.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.2.1",
+    "simple-icons": "^16.28.0",
+    "topojson-client": "^3.1.0",
+    "twemoji": "^14.0.2",
+    "vite": "^7.1.9",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260731.1",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/twemoji": "^13.1.1",
+    "typescript": "~5.9.3",
+    "wrangler": "^4.119.0"
+  }
+}
